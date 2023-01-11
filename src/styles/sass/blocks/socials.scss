@@ -1,0 +1,39 @@
+.socials {
+  display: block;
+  width: auto;
+
+  &__list {
+    @include list-reset();
+    width: auto;
+    max-width: calc(100% + #{em(30)});
+    margin: em(-15) em(-15) 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      margin: em(15) em(15) 0;
+      width: auto;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $colorDefault;
+
+    svg {
+      max-width: em(20);
+      max-height: em(16);
+      margin-right: em(6)
+  }
+
+    span {
+      font: inherit;
+  }
+
+    &:hover {
+      text-decoration: underline;
+  }
+}
+}

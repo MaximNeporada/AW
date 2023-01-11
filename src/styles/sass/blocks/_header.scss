@@ -1,0 +1,155 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  width: 100%;
+  padding-top: em(45);
+  padding-bottom: em(45);
+  color: $textDefault;
+
+  @include respond-up(small) {
+    padding-top: em(20);
+    padding-bottom: em(20);
+
+    &._open {
+      background-color: $bgDefault-2;
+    }
+  }
+
+  &.new-color {
+    color: var(--header-color);
+
+    & .header__logo {
+      position: relative;
+      top: em(-200, 20);
+    }
+
+    & .header__title-block {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  //background-color: $bgDefault;
+
+  //box-shadow: 0 0 5px rgba($colorDefault-2, 0.1);
+
+  & .container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo-block {
+    position: relative;
+    width: 70%;
+    height: em(24);
+
+    overflow: hidden;
+  }
+
+  &__logo {
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    font-family: $fontSecondary;
+
+    &-short > span:not(.opacity) {
+      letter-spacing: rem(1);
+      font-family: $fontSecondary;
+      transition: letter-spacing $transition 0.4s;
+    }
+
+    & > * {
+      font-family: $fontSecondary;
+    }
+
+    &-short .opacity {
+      opacity: 1;
+      font-family: $fontSecondary;
+      transition: opacity $transition 0.5s;
+    }
+
+    &-full {
+      opacity: 0;
+      position: absolute;
+      top: em(24, 20);
+      transition: top $transition , opacity 0.2s linear ;
+    }
+
+    &-part-1 {
+      left: em(16, 20);
+    }
+
+    &-part-2 {
+      left: em(75, 20);
+    }
+
+    &:hover {
+      .header__logo {
+        &-short > span:not(.opacity) {
+          letter-spacing: em(30, 20);
+          transition: letter-spacing $transition;
+
+        }
+
+        &-short .opacity {
+          opacity: 0;
+        }
+
+        &-full {
+          opacity: 1;
+          top: 0;
+          transition: top $transition 0.4s, opacity 0.2s linear 0.4s;
+
+        }
+      }
+    }
+  }
+
+  &__logo,
+  &__title{
+    position: relative;
+    top: 0;
+    margin: 0;
+
+    font-family: $fontSecondary;
+    font-weight: 900;
+    font-size: em(20);
+    line-height: em(24, 20);
+    color: $textDefault;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+
+    transition: top $transition;
+  }
+
+  &__title-block {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -1;
+    max-width: 100%;
+
+    transition: all $transition;
+  }
+
+  &__menu {
+    width: auto;
+    margin-left: em(40);
+    position: relative;
+    z-index: 2;
+
+    @include respond-up(small) {
+      & .menu__button > span:not(.menu__burger) {
+        display: none;
+      }
+    }
+  }
+}

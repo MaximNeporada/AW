@@ -1,0 +1,64 @@
+.content-block {
+  & > * {
+    font-family: $font;
+    line-height: em(17);
+    margin-bottom: em(30);
+
+    @include respond-up(small) {
+      margin-top: rem(15);
+    }
+  }
+
+  h2 {
+    margin-top: em(50);
+    margin-bottom: em(10);
+
+    font-weight: 700;
+    font-size: em(16);
+    line-height: em(24);
+    text-align: left;
+    color: $textDefault;
+
+    @include respond-up(small) {
+      margin-top: rem(30);
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h3,
+  h4 {
+    margin-bottom: em(10);
+
+    font-weight: 700;
+    font-size: em(14);
+    line-height: em(19);
+    text-align: left;
+    color: $textDefault;
+  }
+
+  ul {
+    padding-left: em(18);
+    margin-top: 0;
+
+    li {
+      margin-top: em(10);
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  p {
+    margin: 0 0 em(20);
+    font-size: em(14);
+    line-height: em(17);
+
+    @include respond-up(small) {
+      margin-bottom: rem(15);
+    }
+  }
+}

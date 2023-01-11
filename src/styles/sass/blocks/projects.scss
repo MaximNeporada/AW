@@ -1,0 +1,135 @@
+.projects {
+  width: 100%;
+
+  & .container {
+    width: 100%;
+  }
+
+  &__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: em(45);
+    padding-bottom: em(80);
+
+    color: var(--text-color);
+
+    background-color: transparent;
+    background-color: var(--bg-color);
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-repeat: repeat-y;
+
+
+    @include respond-up(small) {
+      padding-top: em(30);
+      margin-top: em(50);
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  &__title-block {
+    width: 100%;
+    color: var(--title-color);
+  }
+
+  &__content,
+  &__start-info,
+  &__more-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    margin-top: em(30);
+
+    &._show .projects__more-info {
+      margin-top: em(30);
+    }
+  }
+
+  &__more-info {
+    height: 0;
+    overflow: hidden;
+    margin-top: 0;
+
+    transition: height $transition;
+  }
+
+  &__show-more-block {
+    width: 100%;
+    margin-top: em(20);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__show-more {
+    @include button-reset();
+    position: relative;
+    width: 80%;
+    min-width: em(280);
+    padding: em(30) em(10);
+
+    font-weight: 600;
+    line-height: em(19);
+    text-align: center;
+    text-transform: uppercase;
+    color: inherit;
+
+    cursor: pointer;
+
+
+    @include respond-up(small) {
+      width: 100%;
+      min-width: auto;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: em(0);
+
+      color: inherit;
+
+      border-bottom: em(1) solid currentColor;
+
+      transition: height $transition;
+    }
+
+    &:hover::after {
+      height: em(20);
+    }
+  }
+
+  .img-block {
+    &:first-of-type {
+      margin-top: em(-30);
+    }
+  }
+
+  .img-slider {
+    margin-top: em(30);
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  .text-block {
+    margin: em(50) auto em(20);
+    align-self: center;
+
+    @include respond-up(small) {
+      margin: em(30) auto em(10);
+    }
+  }
+
+}

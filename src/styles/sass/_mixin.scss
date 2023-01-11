@@ -1,0 +1,77 @@
+@mixin list-reset() {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin margin-padding-reset() {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin button-reset() {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+/* mixins */
+@mixin respond-to($media) {
+  @media only screen and (min-width: map-get($breakpoints, $media)) {
+    @content;
+  }
+}
+
+@mixin respond-up($media) {
+  @media only screen and (max-width: map-get($breakpoints, $media) - 1px) {
+    @content;
+  }
+}
+
+@mixin respond-between ($from, $to) {
+  @media only screen and (min-width: map-get($breakpoints, $from)) and (max-width: map-get($breakpoints, $to) - 1px) {
+    @content;
+  }
+}
+
+@function rem($pixels, $context: $baseFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return($pixels / $context) * 1rem;
+}
+
+@function em($pixels, $context: $baseFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return ($pixels / $context) * 1em;
+}
+
+@mixin scrollBar ($color-track, $color-thumb, $width: 10px) {
+  // firefox
+  scrollbar-width: thin;          /* "auto" или "thin"  */
+  scrollbar-color: $color-track $color-thumb;
+
+  &::-webkit-scrollbar {
+    width: $width; /* ширина scrollbar */
+  }
+  &::-webkit-scrollbar-track {
+    background: $color-track;        /* цвет дорожки */
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-thumb;    /* цвет плашки */
+    border-radius: $borderRadius;       /* закругления плашки */
+    border: 0 solid $white;  /* padding вокруг плашки */
+  }
+}

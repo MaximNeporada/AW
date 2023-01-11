@@ -1,0 +1,30 @@
+$white: #ffffff;
+
+$colorDefault: #2e2e2e;
+$colorDefault-2: #a8a8a8;
+
+$bgDefault: #f5f5f6;
+$bgDefault-2: #f0f0f0;
+
+$textDefault:  #2e2e2e;
+$textDefault-2: #a8a8a8;
+
+$font: 'Open Sans', sans-serif;
+$fontSecondary: 'Montserrat', sans-serif;
+
+$baseFontSize: 14px;
+$minWidthMobile: 360px;
+$borderRadius: 6px;
+
+$column_gutter: 30px;
+$column_number: 12;
+
+$transition: 0.4s linear;
+
+/* Breakpoints */
+$breakpoints: (
+    small: 768px,
+    medium: 992px,
+    submedium: 1199px,
+    large: 1366px
+);

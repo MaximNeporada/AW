@@ -1,0 +1,335 @@
+$paddingRightPopup: (
+  large: $column_gutter * 5
+);
+$paddingLeftPopup: (
+  large: 94
+);
+
+.menu {
+  &__button {
+    @include button-reset();
+    margin-top: em(8);
+    width: auto;
+    display: flex;
+    align-items: flex-start;
+
+    font-family: $fontSecondary;
+    font-weight: 500;
+    font-size: em(12);
+    line-height: em(15, 12);
+    color: inherit;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    &:hover {
+      & span:not([class]) {
+        opacity: 1;
+      }
+
+      & .menu__burger {
+        filter: invert(0.15);
+      }
+    }
+
+    &._close {
+      color: $textDefault;
+
+      & span:not([class]) {
+        opacity: 1;
+      }
+    }
+
+    &._close {
+      &:hover {
+        opacity: 0.8;
+      }
+
+      & .menu__burger {
+        &::before {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        &::after {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+
+    & span:not([class]) {
+      font: inherit;
+      opacity: 0;
+    }
+  }
+
+  &__burger {
+    position: relative;
+    display: inline-block;
+    margin-left: em(5, 12);
+    width: em(16, 12);
+    height: em(16, 12);
+
+    color: inherit;
+
+    background-color: currentColor;
+    border-radius: 50%;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: em(1, 12);
+
+      background-color: $white;
+      background-color: var(--header-bg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%);
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  &__popup {
+    position: fixed;
+    right: -100%;
+    top: 0;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: em(734);
+    height: 100vh;
+    padding: em(45) 0 em(30) 0;
+    color: $textDefault;
+
+    background-color: $bgDefault-2;
+
+    transition: right $transition;
+
+    @include respond-up(small) {
+      top: rem(64);
+      bottom: 0;
+      max-width: 100%;
+      height: auto;
+      padding-top: rem(16);
+      transition: none;
+    }
+  }
+
+  &__header {
+    width: 100%;
+    padding: 0 em(map-get($paddingRightPopup, large)) rem(4) em(map-get($paddingLeftPopup, large));
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @include respond-up(large) {
+      padding-right:  rem($column_gutter * 3);
+    }
+
+    @include respond-up(medium) {
+      padding-right: rem($column_gutter / 2);
+    }
+
+    @include respond-up(small) {
+      padding-left: 24px;
+      padding-right: 24px;
+
+
+      & .menu__button {
+        position: absolute;
+        right: 24px;
+        top: rem(-44);
+        z-index: 10;
+
+        & > span:not(.menu__burger) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__tabs {
+    @include list-reset();
+    display: flex;
+    padding-bottom: em(13);
+    position: relative;
+  }
+
+  &__tab {
+    margin-right: rem(30);
+
+    font-family: $fontSecondary;
+    font-weight: 900;
+    font-size: rem(20);
+    line-height: rem(30);
+    color: $textDefault-2;
+
+    cursor: pointer;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &._active {
+      color: $textDefault;
+    }
+  }
+
+  &__decoration-line {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 5px;
+
+    background-color: $colorDefault;
+
+    transition: left $transition, width $transition;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    padding-top: em(50);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    @include scrollBar( $bgDefault, $colorDefault-2);
+
+    @include respond-up(medium) {
+      padding-top: rem(26);
+      @include scrollBar( $bgDefault, $colorDefault-2, 2px);
+    }
+  }
+
+  &__tab-block {
+    width: 100%;
+    height: auto;
+
+    display: none;
+
+    &._active {
+      display: block;
+    }
+  }
+
+  &__list {
+    @include list-reset();
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    & li {
+      width: 100%;
+      margin-bottom: em(20);
+      display: flex;
+      flex-direction: column;
+      counter-increment: section;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0 em(map-get($paddingRightPopup, large)) em(20) em(map-get($paddingLeftPopup, large));
+
+      font-family: $fontSecondary;
+
+      color: $textDefault;
+      text-decoration: none;
+
+      border-bottom: em(1) solid $white;
+      cursor: pointer;
+
+      & span {
+        font-weight: 900;
+        font-size: em(40);
+        line-height: em(49, 40);
+
+        @include respond-up(small) {
+          font-size: rem(20);
+          line-height: rem(30);
+        }
+      }
+
+      & .year {
+        display: inline-block;
+        margin-left: em(15, 12);
+        font-weight: 500;
+        font-size: em(12);
+        line-height: em(19, 12);
+        color: $textDefault-2;
+
+        @include respond-up(small) {
+          margin-left: 0;
+          position: absolute;
+          right: 0;
+          top: 8px;
+        }
+      }
+
+      &::before {
+        position: absolute;
+        right: calc(100% - #{em(map-get($paddingLeftPopup, large), 12)} + #{em(23, 12)});
+        top: em(24, 12);
+        content: attr(data-count);
+        display: inline-block;
+
+        font-weight: 500;
+        font-size: em(12);
+        line-height: em(19, 12);
+        color: $textDefault-2;
+
+        @include respond-up(small) {
+          margin-left: 0;
+          position: absolute;
+          left: 0;
+          right: auto;
+          top: 8px;
+        }
+      }
+
+      &:hover,
+      ._active {
+        border-color: $colorDefault;
+      }
+
+      @include respond-up(small) {
+        padding: 0 46px 20px 24px;
+      }
+    }
+  }
+
+  &__services {
+    padding: 0 em(map-get($paddingRightPopup, large)) 0 em(map-get($paddingLeftPopup, large));
+    @include respond-up(medium) {
+      padding-right: rem($column_gutter / 2);
+    }
+    @include respond-up(small) {
+      padding: 0 24px;
+    }
+  }
+
+  &._open {
+    & .menu {
+      &__popup {
+        right: 0;
+      }
+    }
+  }
+}

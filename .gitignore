@@ -1,0 +1,10 @@
+.history
+.idea/
+/node_modules/
+.vscode/
+public/
+compiled/
+npm
+
+deploy.php
+deploy_log.txt

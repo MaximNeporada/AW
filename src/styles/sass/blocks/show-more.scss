@@ -1,0 +1,35 @@
+.show-more {
+  width: 100%;
+
+  &__content {
+    width: 100%;
+    height: auto;
+  }
+
+  &__button-block {
+    width: 100%;
+    margin-top: em(10);
+
+    display: none;
+  }
+
+  &__button {
+    @include button-reset();
+
+    color: $colorDefault;
+
+    & .value {
+      font-weight: 700;
+      font-size: em(14);
+      line-height: em(19);
+      color: inherit;
+    }
+
+    svg {
+      width: em(10);
+      height: em(5);
+      color: inherit;
+      stroke: currentColor;
+    }
+  }
+}
